@@ -36,18 +36,22 @@ public class HelloController {
 
     @FXML
     private ChoiceBox<String> leftChoiceBox;
-
     @FXML
     private ChoiceBox<String> rightChoiceBox;
 
     public void initialize() {
-        rightChoiceBox.setItems(options);
         leftChoiceBox.setItems(options);
+        leftChoiceBox.setValue("F");
+        rightChoiceBox.setItems(options);
+        rightChoiceBox.setValue("C");
 
     }
 
     @FXML
     void handleCalculateButton(ActionEvent event) {
+
+        BigDecimal inputTemp = new BigDecimal(leftField.getText());
+        float inputTempFloat = Float.parseFloat(String.valueOf(inputTemp));
 
         if(Objects.equals(leftChoiceBox.getValue(), "C")){
             if(Objects.equals(rightChoiceBox.getValue(), "C")) {
@@ -55,13 +59,9 @@ public class HelloController {
                 middleField.setText("C = C");
 
             }else if(Objects.equals(rightChoiceBox.getValue(), "F")){
-                BigDecimal amount = new BigDecimal(leftField.getText());
-                float inputTempFloat = Float.parseFloat(String.valueOf(amount));
                 rightField.setText(String.valueOf(((inputTempFloat) * (9.0/5.0)) + 32));
                 middleField.setText("C * (9.0/5.0) + 32 = F");
             }else if(Objects.equals(rightChoiceBox.getValue(), "K")){
-                BigDecimal amount = new BigDecimal(leftField.getText());
-                float inputTempFloat = Float.parseFloat(String.valueOf(amount));
                 rightField.setText(String.valueOf((inputTempFloat) + 273.15));
                 middleField.setText("C + 273.15 = K");
 
@@ -70,8 +70,6 @@ public class HelloController {
             }
         } else if (Objects.equals(leftChoiceBox.getValue(), "F")){
             if(Objects.equals(rightChoiceBox.getValue(), "C")) {
-                BigDecimal amount = new BigDecimal(leftField.getText());
-                float inputTempFloat = Float.parseFloat(String.valueOf(amount));
                 rightField.setText(String.valueOf(((inputTempFloat) - 32.0) * (5.0/9.0)));
                 middleField.setText("(F - 32.0) * 5.0/9.0 = C");
 
@@ -81,8 +79,6 @@ public class HelloController {
                 middleField.setText("F = F");
 
             }else if(Objects.equals(rightChoiceBox.getValue(), "K")){
-                BigDecimal amount = new BigDecimal(leftField.getText());
-                float inputTempFloat = Float.parseFloat(String.valueOf(amount));
                 rightField.setText(String.valueOf((((inputTempFloat) - 32.0) * (5.0/9.0))+273.15));
                 middleField.setText("(F - 32.0) * 5.0/9.0 + 273.15 = K");
 
@@ -92,14 +88,10 @@ public class HelloController {
             }
         } else if(Objects.equals(leftChoiceBox.getValue(), "K")){
                 if(Objects.equals(rightChoiceBox.getValue(), "C")) {
-                    BigDecimal amount = new BigDecimal(leftField.getText());
-                    float inputTempFloat = Float.parseFloat(String.valueOf(amount));
                     rightField.setText(String.valueOf((inputTempFloat) - 273.15));
                     middleField.setText("(K - 273.15 = C");
 
                 }else if(Objects.equals(rightChoiceBox.getValue(), "F")){
-                    BigDecimal amount = new BigDecimal(leftField.getText());
-                    float inputTempFloat = Float.parseFloat(String.valueOf(amount));
                     rightField.setText(String.valueOf(((inputTempFloat - 273.15) * (9.0/5.0)) + 32));
                     middleField.setText("(K - 273.15) * 9.0/5.0 + 32 = F");
 

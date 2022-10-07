@@ -50,17 +50,17 @@ public class HelloController {
     @FXML
     void handleCalculateButton(ActionEvent event) {
 
-        BigDecimal inputTemp = new BigDecimal(leftField.getText());
-        float inputTempFloat = Float.parseFloat(String.valueOf(inputTemp));
+        float inputTempFloat = Float.parseFloat(String.valueOf(leftField.getText()));
 
         if(Objects.equals(leftChoiceBox.getValue(), "C")){
             if(Objects.equals(rightChoiceBox.getValue(), "C")) {
-                rightField.setText(String.valueOf(leftField.getText()));
+                rightField.setText(String.valueOf(inputTempFloat));
                 middleField.setText("C = C");
 
             }else if(Objects.equals(rightChoiceBox.getValue(), "F")){
                 rightField.setText(String.valueOf(((inputTempFloat) * (9.0/5.0)) + 32));
                 middleField.setText("C * (9.0/5.0) + 32 = F");
+
             }else if(Objects.equals(rightChoiceBox.getValue(), "K")){
                 rightField.setText(String.valueOf((inputTempFloat) + 273.15));
                 middleField.setText("C + 273.15 = K");
@@ -75,7 +75,7 @@ public class HelloController {
 
 
             }else if(Objects.equals(rightChoiceBox.getValue(), "F")){
-                rightField.setText(String.valueOf(leftField.getText()));
+                rightField.setText(String.valueOf(inputTempFloat));
                 middleField.setText("F = F");
 
             }else if(Objects.equals(rightChoiceBox.getValue(), "K")){
@@ -89,14 +89,14 @@ public class HelloController {
         } else if(Objects.equals(leftChoiceBox.getValue(), "K")){
                 if(Objects.equals(rightChoiceBox.getValue(), "C")) {
                     rightField.setText(String.valueOf((inputTempFloat) - 273.15));
-                    middleField.setText("(K - 273.15 = C");
+                    middleField.setText("K - 273.15 = C");
 
                 }else if(Objects.equals(rightChoiceBox.getValue(), "F")){
                     rightField.setText(String.valueOf(((inputTempFloat - 273.15) * (9.0/5.0)) + 32));
                     middleField.setText("(K - 273.15) * 9.0/5.0 + 32 = F");
 
                 }else if(Objects.equals(rightChoiceBox.getValue(), "K")){
-                    rightField.setText(String.valueOf(leftField.getText()));
+                    rightField.setText(String.valueOf(inputTempFloat));
                     middleField.setText("K = K");
 
 
